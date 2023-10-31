@@ -1,32 +1,3 @@
-# from fastapi import FastAPI
-# from pydantic import BaseModel
-# from datetime import datetime
-# import logging
-# from queue import Queue  # Import the Queue class
-
-# app = FastAPI()
-
-# # Set the maximum size for the queue to store the latest messages
-# max_messages = 100
-# shared_file = Queue(max_messages)  # Use a Queue instead of a deque
-
-# class Message(BaseModel):
-#     text: str
-
-# # Configure logging
-# logging.basicConfig(filename='server.log', level=logging.INFO, format='%(asctime)s - %(message)s')
-
-# @app.get("/view")
-# async def view_messages():
-#     return list(shared_file.queue)  # Access the queue using the .queue attribute
-
-# @app.post("/post", response_model=Message)
-# async def post_message(message: Message):
-#     print(message) 
-#     shared_file.put(message)  # Use .put() to add messages to the queue
-#     return {"text": message}
-
-
 import os
 from fastapi import FastAPI
 from pydantic import BaseModel

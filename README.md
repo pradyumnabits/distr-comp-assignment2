@@ -22,20 +22,18 @@ Server 1:
 1. Open a terminal , navigate to distr-comp-assignment2
 2. Navigate to the `app-server-1` directory.
 3. Update the following  in chat-app.py
-
-    # URL of the FastAPI server
+    URL of the FastAPI server
     data_server_url = "http://127.0.0.1:8000"  # Replace with the actual server URL of Server 3
-
-	# Define the URL of the local process's FastAPI application
-	LOCAL_API_URL = "http://localhost:8002"  # Replace with the correct local middleware port
+    Define the URL of the local process's FastAPI application
+    LOCAL_API_URL = "http://localhost:8002"  # Replace with the correct local middleware port
 
 4. Update the following  in middleware-server.py
    
-    # Set the server port (use the correct port)
-	local_server_port = 8002 # Replace with the correct local port
+     Set the server port (use the correct port)
+     local_server_port = 8002 # Replace with the correct local port
 
-	# Define the URL of the remote process's FastAPI application
-	REMOTE_API_URL = "http://localhost:8001"  # Replace with the correct URL of Server 2
+     Define the URL of the remote process's FastAPI application
+     REMOTE_API_URL = "http://localhost:8001"  # Replace with the correct URL of Server 2
 
 3. Start middleware-server.py 
    ./start-middleware.sh
@@ -50,19 +48,19 @@ Server 1:
 2. Navigate to the `app-server-1` directory.
 3. Update the following  in chat-app.py
 
-    # URL of the FastAPI server
+    URL of the FastAPI server
     data_server_url = "http://127.0.0.1:8000"  # Replace with the actual server URL of Server 3 
 
-	# Define the URL of the local process's FastAPI application
-	LOCAL_API_URL = "http://localhost:8002"   # Replace with the correct local middleware port
+    Define the URL of the local process's FastAPI application
+    LOCAL_API_URL = "http://localhost:8002"   # Replace with the correct local middleware port
 
 4. Update the following  in middleware-server.py
    
-    # Set the server port (use the correct port)
-	local_server_port = 8002 # Replace with the correct local port
+    Set the server port (use the correct port)
+    local_server_port = 8002 # Replace with the correct local port
 
-	# Define the URL of the remote process's FastAPI application
-	REMOTE_API_URL = "http://localhost:8001"  # Replace with the correct URL of Server 1
+    Define the URL of the remote process's FastAPI application
+    REMOTE_API_URL = "http://localhost:8001"  # Replace with the correct URL of Server 1
 
 3. Start middleware-server.py 
    ./start-middleware.sh

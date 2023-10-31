@@ -45,7 +45,7 @@ Server 1:
 ## Server 2
 Server 1:
 1. Open a terminal , navigate to distr-comp-assignment2
-2. Navigate to the `app-server-1` directory.
+2. Navigate to the `app-server-2` directory.
 3. Update the following  in chat-app.py
 
     URL of the FastAPI server

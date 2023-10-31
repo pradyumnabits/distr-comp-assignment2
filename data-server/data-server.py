@@ -6,7 +6,7 @@ from queue import Queue
 app = FastAPI()
 
 # Retrieve the port from an environment variable or use a default value (e.g., 8000)
-port = int(os.getenv("CHAT_APP_PORT", 8000))
+port = int(os.getenv("DATA_SERVER_PORT", 8000))
 
 # Set the maximum size for the queue to store the latest messages
 max_messages = 100

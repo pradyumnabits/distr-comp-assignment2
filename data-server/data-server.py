@@ -5,6 +5,9 @@ from queue import Queue
 
 app = FastAPI()
 
+# Retrieve the port from an environment variable or use a default value (e.g., 8000)
+port = int(os.getenv("CHAT_APP_PORT", 8000))
+
 # Set the maximum size for the queue to store the latest messages
 max_messages = 100
 
@@ -36,3 +39,9 @@ async def post_message(message: Message):
     with open(data_file_path, "a") as file:
         file.write(f"{message.text}\n")
     return {"text": message.text}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=port)
+

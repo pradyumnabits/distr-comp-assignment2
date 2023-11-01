@@ -15,7 +15,7 @@ machine_name = socket.gethostname()
 data_server_url = "http://127.0.0.1:8000"  # Replace with the actual server URL
 
 # Define the URL of the local process's FastAPI application
-LOCAL_API_URL = "http://localhost:8002"  # Replace with the correct URL
+LOCAL_API_URL = "http://localhost:8001"  # Replace with the correct URL
 
 # Constants
 NUM_PROCESSES = 2  # Replace with the actual number of processes
@@ -54,11 +54,23 @@ def make_post_request(data_server_url, message_content):
     else:
         print("Failed to post message.")
 
+# Function to change the user name if input is provided
+def change_user_name():
+    global user_name
+    new_user_name = input("Enter your name (Press Enter to keep the current name): ")
+    if new_user_name:
+        user_name = new_user_name
+        print(f"User name updated to: {user_name}")
+
+
 
 while True:
+    change_user_name()  # Prompt for user name input
     print("Options: [ view , post ]")
     print("view : View Messages")
     print("post : Post Message")
+    print("exit: Exit Application")
+
     option = input(f"{user_name}@{machine_name} > ").lower()
 
     if option == "view":
@@ -80,6 +92,9 @@ while True:
         message_to_post = f"{user_name}: {message_content}"
         make_post_request_synchronized(data_server_url, message_content)
 
+    elif option == "exit":
+        print("Exiting the application.")
+        break  # Exit the loop and application
     
     else:
         print("Invalid option.")

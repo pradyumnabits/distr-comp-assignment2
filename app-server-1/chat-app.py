@@ -54,11 +54,23 @@ def make_post_request(data_server_url, message_content):
     else:
         print("Failed to post message.")
 
+# Function to change the user name if input is provided
+def change_user_name():
+    global user_name
+    new_user_name = input("Enter your name (Press Enter to keep the current name): ")
+    if new_user_name:
+        user_name = new_user_name
+        print(f"User name updated to: {user_name}")
+
+
 
 while True:
+    change_user_name()  # Prompt for user name input
     print("Options: [ view , post ]")
     print("view : View Messages")
     print("post : Post Message")
+    print("exit: Exit Application")
+
     option = input(f"{user_name}@{machine_name} > ").lower()
 
     if option == "view":
@@ -80,6 +92,9 @@ while True:
         message_to_post = f"{user_name}: {message_content}"
         make_post_request_synchronized(data_server_url, message_content)
 
+    elif option == "exit":
+        print("Exiting the application.")
+        break  # Exit the loop and application
     
     else:
         print("Invalid option.")

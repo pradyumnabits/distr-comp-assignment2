@@ -1,38 +1,12 @@
-# from fastapi import FastAPI
-# from pydantic import BaseModel
-# from datetime import datetime
-# import logging
-# from queue import Queue  # Import the Queue class
-
-# app = FastAPI()
-
-# # Set the maximum size for the queue to store the latest messages
-# max_messages = 100
-# shared_file = Queue(max_messages)  # Use a Queue instead of a deque
-
-# class Message(BaseModel):
-#     text: str
-
-# # Configure logging
-# logging.basicConfig(filename='server.log', level=logging.INFO, format='%(asctime)s - %(message)s')
-
-# @app.get("/view")
-# async def view_messages():
-#     return list(shared_file.queue)  # Access the queue using the .queue attribute
-
-# @app.post("/post", response_model=Message)
-# async def post_message(message: Message):
-#     print(message) 
-#     shared_file.put(message)  # Use .put() to add messages to the queue
-#     return {"text": message}
-
-
 import os
 from fastapi import FastAPI
 from pydantic import BaseModel
 from queue import Queue
 
 app = FastAPI()
+
+# Retrieve the port from an environment variable or use a default value (e.g., 8000)
+port = int(os.getenv("DATA_SERVER_PORT", 8000))
 
 # Set the maximum size for the queue to store the latest messages
 max_messages = 100
@@ -65,3 +39,9 @@ async def post_message(message: Message):
     with open(data_file_path, "a") as file:
         file.write(f"{message.text}\n")
     return {"text": message.text}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=port)
+

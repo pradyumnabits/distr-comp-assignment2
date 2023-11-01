@@ -6,7 +6,17 @@ from datetime import datetime
 import logging
 
 # Get the system's username
-user_name = getpass.getuser()
+#user_name = getpass.getuser()
+# Function to change the user name if input is provided
+def change_user_name():
+    new_user_name = input("Enter your name (Press Enter to keep the current name): ")
+    if new_user_name:
+        return new_user_name
+    else:
+        return getpass.getuser()
+
+# Get the system's username for the first time
+user_name = change_user_name()
 
 # Get the machine name
 machine_name = socket.gethostname()
@@ -54,18 +64,7 @@ def make_post_request(data_server_url, message_content):
     else:
         print("Failed to post message.")
 
-# Function to change the user name if input is provided
-def change_user_name():
-    global user_name
-    new_user_name = input("Enter your name (Press Enter to keep the current name): ")
-    if new_user_name:
-        user_name = new_user_name
-        print(f"User name updated to: {user_name}")
-
-
-
 while True:
-    change_user_name()  # Prompt for user name input
     print("Options: [ view , post ]")
     print("view : View Messages")
     print("post : Post Message")

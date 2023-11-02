@@ -1,4 +1,4 @@
-# Server application
+# Middleware Server application - Lamport's DME Implementation
 from fastapi import FastAPI
 from pydantic import BaseModel
 import requests

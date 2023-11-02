@@ -91,50 +91,6 @@ async def wait_for_requesting():
     while requesting:
         await asyncio.sleep(interval)
 
-
-# @app.post("/request_access")
-# async def request_access(request_data: RequestMessage):
-#     global process_id, clock, requesting, num_replies_received, queued_requests
-
-#     # Receive a request message from another process
-#     sender_process_id = request_data.sender_process_id
-#     sender_clock = request_data.sender_clock
-#     clock = max(clock, sender_clock) + 1
-
-#     if requesting and (clock == sender_clock):
-#     # Check if the local process is already requesting access
-#     # and if its clock is equal to the sender's clock
-
-#     # In Lamport's DME algorithm, the process with the lower
-#     # timestamp has higher priority. If the local process's
-#     # timestamp (clock) is equal to the sender's timestamp
-#     # (sender_clock), then we compare the process IDs to
-#     # determine priority.
-
-#         if process_id < sender_process_id:
-#             # The local process has a lower process ID, so it has
-#             # higher priority. Send a reply message to the sender.
-#             reply_message = ReplyMessage(sender_process_id=process_id, sender_clock=clock)
-#             queued_requests.append((sender_clock, sender_process_id))
-
-#         else:
-#             # The sender process has a lower process ID, so it has
-#             # higher priority. Do not send a reply message.
-#             print(f"request_access  - Process ID: {process_id}, Clock: {clock}, Queued Requests: {queued_requests}")
-#     else:
-#         # The local process is not currently requesting access, or
-#         # the sender's clock is higher. In this case, do not send
-#         # a reply message.
-#         reply_message = ReplyMessage(sender_process_id=process_id, sender_clock=clock)
-#         queued_requests.append((sender_clock, sender_process_id))
-
-
-#     print(f"request_access  - Process ID: {process_id}, Clock: {clock}, Queued Requests: {queued_requests}")
-
-
-#     return reply_message
-
-
 @app.post("/release_access")
 async def release_access(request_data: RequestMessage):
     global process_id, clock, requesting, num_replies_received, queued_requests
